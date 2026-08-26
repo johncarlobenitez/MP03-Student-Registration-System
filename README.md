@@ -187,7 +187,7 @@ Display Student Profile
 
 The following image shows the Laravel project structure of the Aurevian University Student Registration System.
 
-![Laravel Project Structure](screenshots/project-structure.png)
+![Laravel Project Structure](screenshots/project-structure.jng)
 
 
 ---
@@ -198,7 +198,7 @@ The following image shows the Laravel project structure of the Aurevian Universi
 
 The registration flowchart shows how the system processes student registration from input submission, validation, database storage, and profile display.
 
-![Registration Flowchart](documentation/registration-flowchart.png)
+![Registration Flowchart](documentation\registration-flowchart.drawio.png)
 
 
 
@@ -206,7 +206,7 @@ The registration flowchart shows how the system processes student registration f
 
 The database ER diagram shows the structure of the students table and the relationship of stored student information.
 
-![Database ER Diagram](documentation/database-er-diagram.png)
+![Database ER Diagram](documentation\database-er-diagram.drawio.png)
 
 
 
@@ -214,7 +214,7 @@ The database ER diagram shows the structure of the students table and the relati
 
 The Laravel request lifecycle diagram shows how a request moves from the user interface, routes, controller, model, database, and Blade views.
 
-![Laravel Request Lifecycle](documentation/laravel-request-lifecycle.png)
+![Laravel Request Lifecycle](documentation\laravel-request-lifecycle.drawio.png)
 
 
 
