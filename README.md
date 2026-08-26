@@ -4,9 +4,9 @@
 
 The Aurevian University Student Registration System is a web-based student registration application developed using Laravel.
 
-The system allows students to submit their personal information, contact details, academic information, and profile picture through an online registration form. The submitted information is validated and stored in a MySQL database, then displayed through a student profile page.
+The system allows students to submit their personal information, contact details, academic information, and profile picture through an online registration form. The submitted information is validated, stored in a MySQL database, and displayed through a student profile page after successful registration.
 
-The goal of this project is to provide a simple and organized digital solution for managing student registration records.
+The purpose of this project is to provide a simple and organized digital solution for managing student registration records while applying proper validation, database management, and Laravel development practices.
 
 ---
 
@@ -32,7 +32,7 @@ The system allows students to register their information including:
 
 ## Input Validation
 
-The system includes validation to ensure accurate student information.
+The system applies Laravel validation rules to ensure accurate and complete student information.
 
 Validation includes:
 
@@ -103,17 +103,17 @@ After successful registration, the system displays the student's complete inform
 
 The system uses a MySQL database named:
 
-```
+```text
 student_registration
 ```
 
 The main table used in the system is:
 
-```
+```text
 students
 ```
 
-The table stores student registration records including personal information, academic details, and uploaded profile pictures.
+The `students` table stores student registration records including personal information, academic details, and uploaded profile pictures.
 
 
 ## Database Structure Screenshot
@@ -121,13 +121,11 @@ The table stores student registration records including personal information, ac
 ![Database Structure](screenshots/database-structure.jpg)
 
 
-
 ---
 
 # Database Table Fields
 
 The `students` table contains the following fields:
-
 
 | Field Name | Description |
 |---|---|
@@ -152,22 +150,32 @@ The `students` table contains the following fields:
 
 # System Flow
 
+The system follows this process:
+
 ```
 Student Registration Form
 
-          ↓
+        ↓
+
+Route Handling (web.php)
+
+        ↓
+
+StudentController
+
+        ↓
 
 Input Validation
 
-          ↓
+        ↓
 
-Save Student Information
+Student Model
 
-          ↓
+        ↓
 
-Store Data in MySQL Database
+Save Data in MySQL Database
 
-          ↓
+        ↓
 
 Display Student Profile
 ```
@@ -179,8 +187,34 @@ Display Student Profile
 
 The following image shows the Laravel project structure of the Aurevian University Student Registration System.
 
-
 ![Laravel Project Structure](screenshots/project-structure.png)
+
+
+---
+
+# System Documentation
+
+## Registration Flowchart
+
+The registration flowchart shows how the system processes student registration from input submission, validation, database storage, and profile display.
+
+![Registration Flowchart](documentation/registration-flowchart.png)
+
+
+
+## Database ER Diagram
+
+The database ER diagram shows the structure of the students table and the relationship of stored student information.
+
+![Database ER Diagram](documentation/database-er-diagram.png)
+
+
+
+## Laravel Request Lifecycle
+
+The Laravel request lifecycle diagram shows how a request moves from the user interface, routes, controller, model, database, and Blade views.
+
+![Laravel Request Lifecycle](documentation/laravel-request-lifecycle.png)
 
 
 
@@ -256,7 +290,7 @@ php artisan serve
 
 Open in browser:
 
-```
+```text
 http://127.0.0.1:8000
 ```
 
@@ -267,7 +301,6 @@ http://127.0.0.1:8000
 
 
 ## Student Registration Page
-
 
 ![Student Registration Page 1](screenshots/registration-page1.jpg)
 
@@ -280,7 +313,6 @@ http://127.0.0.1:8000
 
 ## Student Profile Page
 
-
 ![Student Profile Page 1](screenshots/student-profile1.png)
 
 
@@ -290,18 +322,9 @@ http://127.0.0.1:8000
 
 ---
 
-## Database Structure
-
-
-![Database Structure](screenshots/database-structure.jpg)
-
-
-
----
-
 # Testing
 
-The system was tested using different scenarios:
+The system was tested using different scenarios.
 
 
 ## Valid Registration
@@ -319,6 +342,88 @@ Expected Result:
 
 - Validation messages are displayed
 - Data will not be saved until requirements are completed
+
+
+---
+
+# Problems Encountered
+
+
+## 1. Database Table Error
+
+### Problem:
+
+The system displayed an error because the `students` table was not yet available in the database.
+
+### Solution:
+
+Created the migration file and executed:
+
+```bash
+php artisan migrate
+```
+
+
+---
+
+## 2. Profile Picture Not Displaying
+
+### Problem:
+
+Uploaded images were successfully saved but were not displayed in the browser.
+
+### Solution:
+
+Created the Laravel storage link:
+
+```bash
+php artisan storage:link
+```
+
+
+---
+
+## 3. Validation Issues
+
+### Problem:
+
+Some required fields were not properly validated during form submission.
+
+### Solution:
+
+Improved Laravel validation rules inside the `StudentController` to ensure correct user input handling.
+
+
+---
+
+# Reflection
+
+Creating the Aurevian University Student Registration System gave me a better understanding of how important proper data handling is when developing a web application. At first, I thought that creating a registration system was mainly about designing a form and saving information in a database. However, while working on this project, I realized that a reliable system requires proper validation, organized data management, and secure handling of user inputs.
+
+One of the most important lessons I learned from this project is the importance of input validation. Ensuring that users provide complete and correct information helps prevent errors and keeps the database organized. Features such as required fields, unique student ID validation, email checking, and image validation showed me that a system should not only collect data but also verify if the information is reliable.
+
+I also learned more about handling uploaded files, especially profile pictures. I discovered that file uploads require proper checking and storage management because accepting incorrect files may cause problems in the system.
+
+During the development process, I encountered different challenges such as database migration errors, missing tables, and issues with displaying uploaded images. Solving these problems helped me understand how Laravel components work together, including routes, controllers, models, views, and database connections.
+
+Overall, this project improved my understanding of Laravel development and database management. It taught me that creating a system is not only about making features work but also about building something organized, secure, and user-friendly.
+
+
+---
+
+# References
+
+- Laravel Documentation  
+https://laravel.com/docs
+
+- PHP Documentation  
+https://www.php.net/docs.php
+
+- MySQL Documentation  
+https://dev.mysql.com/doc/
+
+- Tailwind CSS Documentation  
+https://tailwindcss.com/docs
 
 
 ---
