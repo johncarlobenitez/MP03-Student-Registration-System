@@ -1,58 +1,265 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+# Aurevian University Student Registration System
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+## Project Description
 
-## About Laravel
+The Aurevian University Student Registration System is a web-based student registration application developed using Laravel.
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+The system allows students to submit their personal information, contact details, academic information, and profile picture through an online registration form. The submitted information is validated and stored in a MySQL database, then displayed through a student profile page.
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+The goal of this project is to provide a simple and organized digital solution for managing student registration records.
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+---
 
-## Learning Laravel
+# Features
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+## Student Registration Form
 
-In addition, [Laracasts](https://laracasts.com) contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+The system allows students to register their information including:
 
-You can also watch bite-sized lessons with real-world projects on [Laravel Learn](https://laravel.com/learn), where you will be guided through building a Laravel application from scratch while learning PHP fundamentals.
+- Student ID
+- First Name
+- Middle Name
+- Last Name
+- Email Address
+- Mobile Number
+- Date of Birth
+- Gender
+- Program
+- Year Level
+- Address
+- Profile Picture
 
-## Agentic Development
 
-Laravel's predictable structure and conventions make it ideal for AI coding agents like Claude Code, Cursor, and GitHub Copilot. Install [Laravel Boost](https://laravel.com/docs/ai) to supercharge your AI workflow:
+## Input Validation
+
+The system includes validation to ensure accurate student information.
+
+Validation includes:
+
+- Required fields cannot be empty
+- Student ID must be unique
+- Student ID accepts numbers only
+- Email address must follow a valid format
+- Mobile number validation
+- Profile picture file validation
+
+
+## Profile Picture Upload
+
+Students can upload their profile picture during registration.
+
+Supported formats:
+
+- JPG
+- JPEG
+- PNG
+
+Maximum file size:
+
+- 2MB
+
+
+## Student Profile Display
+
+After successful registration, the system displays the student's complete information:
+
+- Student ID
+- Full Name
+- Email Address
+- Mobile Number
+- Date of Birth
+- Gender
+- Program
+- Year Level
+- Address
+- Profile Picture
+
+
+---
+
+# Technologies Used
+
+## Frontend
+
+- HTML
+- Tailwind CSS
+- Laravel Blade Template
+
+
+## Backend
+
+- Laravel Framework
+- PHP
+
+
+## Database
+
+- MySQL
+
+
+---
+
+# Database Structure
+
+The system uses a MySQL database named:student_registration
+The main table used is:student_registration
+
+
+The table stores student registration records including personal information, academic details, and uploaded profile pictures.
+
+
+## Database Structure Screenshot
+
+
+Display:
+
+![Database Structure](screenshots/database-structure.jpg)
+
+
+---
+
+# Database Table Fields
+
+The `students` table contains the following fields:
+
+
+| Field Name | Description |
+|---|---|
+| id | Primary key |
+| student_id | Unique student identification number |
+| first_name | Student first name |
+| middle_name | Student middle name |
+| last_name | Student last name |
+| email | Student email address |
+| mobile_number | Student contact number |
+| date_of_birth | Student birth date |
+| gender | Student gender |
+| program | Student academic program |
+| year_level | Student current year level |
+| address | Student residential address |
+| profile_picture | Uploaded student image |
+| created_at | Record creation date |
+| updated_at | Record update date |
+
+
+---
+
+# System Flow
+Student Registration Form
+      ↓
+Input Validation
+      ↓
+Save Student Information
+      ↓
+Store Data in MySQL Database
+
+
+
+---
+
+# Laravel Project Structure
+app
+│
+├── Http
+│ └── Controllers
+│ └── StudentController.php
+│
+└── Models
+└── Student.php
+
+resources
+│
+└── views
+└── students
+├── create.blade.php
+└── show.blade.php
+
+database
+│
+└── migrations
+└── create_students_table.php
+
+
+
+---
+
+# Installation Guide
+
+
+ 2. Clone Repository
 
 ```bash
-composer require laravel/boost --dev
+git clone <repository-url>
 
-php artisan boost:install
-```
+2. Install Dependencies
+composer install
 
-Boost provides your agent 15+ tools and skills that help agents build Laravel applications while following best practices.
+Setup Environment File
+cp .env.example .env
 
-## Contributing
+Update your database configuration:
+DB_CONNECTION=mysql
+DB_HOST=127.0.0.1
+DB_PORT=3306
+DB_DATABASE=student_registration
+DB_USERNAME=root
+DB_PASSWORD=
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+Generate Application Key
+php artisan key:generate
 
-## Code of Conduct
+Run Database Migration
+php artisan migrate
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+Create Storage Link
+php artisan storage:link
 
-## Security Vulnerabilities
+Run the Application
+php artisan serve
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+Open in browser: http://127.0.0.1:8000
 
-## License
+Screenshots
+Student Registration Page
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+screenshots/registration-page1.jpg
+
+screenshots/registration-page2.jpg
+
+Student Profile Page
+
+screenshots\student-profile1.png
+
+screenshots\student-profile2.png
+
+Database Structure
+
+screenshots\database-structure.jpg
+
+Testing
+
+The system was tested using different scenarios:
+
+Valid Registration
+
+Expected Result:
+
+Student information is saved successfully
+Profile picture is uploaded
+Student profile page is displayed
+Invalid Registration
+
+Expected Result:
+
+Validation messages are displayed
+Data will not be saved until requirements are completed
+
+Author
+
+Developed by:
+
+John Carlo R. Benitez
+
+Aurevian University Student Registration System
+
+2026
