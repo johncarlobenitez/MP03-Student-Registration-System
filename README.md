@@ -101,19 +101,25 @@ After successful registration, the system displays the student's complete inform
 
 # Database Structure
 
-The system uses a MySQL database named:student_registration
-The main table used is:student_registration
+The system uses a MySQL database named:
 
+```
+student_registration
+```
+
+The main table used in the system is:
+
+```
+students
+```
 
 The table stores student registration records including personal information, academic details, and uploaded profile pictures.
 
 
 ## Database Structure Screenshot
 
-
-Display:
-
 ![Database Structure](screenshots/database-structure.jpg)
+
 
 
 ---
@@ -145,39 +151,36 @@ The `students` table contains the following fields:
 ---
 
 # System Flow
+
+```
 Student Registration Form
-      ↓
+
+          ↓
+
 Input Validation
-      ↓
+
+          ↓
+
 Save Student Information
-      ↓
+
+          ↓
+
 Store Data in MySQL Database
 
+          ↓
+
+Display Student Profile
+```
 
 
 ---
 
 # Laravel Project Structure
-app
-│
-├── Http
-│ └── Controllers
-│ └── StudentController.php
-│
-└── Models
-└── Student.php
 
-resources
-│
-└── views
-└── students
-├── create.blade.php
-└── show.blade.php
+The following image shows the Laravel project structure of the Aurevian University Student Registration System.
 
-database
-│
-└── migrations
-└── create_students_table.php
+
+![Laravel Project Structure](screenshots/project-structure.png)
 
 
 
@@ -186,79 +189,145 @@ database
 # Installation Guide
 
 
- 2. Clone Repository
+## 1. Clone Repository
 
 ```bash
 git clone <repository-url>
+```
 
-2. Install Dependencies
+
+## 2. Install Dependencies
+
+```bash
 composer install
+```
 
-Setup Environment File
+
+## 3. Setup Environment File
+
+Create a copy of `.env.example`:
+
+```bash
 cp .env.example .env
+```
+
 
 Update your database configuration:
+
+```env
 DB_CONNECTION=mysql
 DB_HOST=127.0.0.1
 DB_PORT=3306
 DB_DATABASE=student_registration
 DB_USERNAME=root
 DB_PASSWORD=
+```
 
-Generate Application Key
+
+## 4. Generate Application Key
+
+```bash
 php artisan key:generate
+```
 
-Run Database Migration
+
+## 5. Run Database Migration
+
+```bash
 php artisan migrate
+```
 
-Create Storage Link
+
+## 6. Create Storage Link
+
+For profile picture uploads:
+
+```bash
 php artisan storage:link
+```
 
-Run the Application
+
+## 7. Run the Application
+
+```bash
 php artisan serve
+```
 
-Open in browser: http://127.0.0.1:8000
 
-Screenshots
-Student Registration Page
+Open in browser:
 
-screenshots/registration-page1.jpg
+```
+http://127.0.0.1:8000
+```
 
-screenshots/registration-page2.jpg
 
-Student Profile Page
+---
 
-screenshots\student-profile1.png
+# Screenshots
 
-screenshots\student-profile2.png
 
-Database Structure
+## Student Registration Page
 
-screenshots\database-structure.jpg
 
-Testing
+![Student Registration Page 1](screenshots/registration-page1.jpg)
+
+
+![Student Registration Page 2](screenshots/registration-page2.jpg)
+
+
+
+---
+
+## Student Profile Page
+
+
+![Student Profile Page 1](screenshots/student-profile1.png)
+
+
+![Student Profile Page 2](screenshots/student-profile2.png)
+
+
+
+---
+
+## Database Structure
+
+
+![Database Structure](screenshots/database-structure.jpg)
+
+
+
+---
+
+# Testing
 
 The system was tested using different scenarios:
 
-Valid Registration
+
+## Valid Registration
 
 Expected Result:
 
-Student information is saved successfully
-Profile picture is uploaded
-Student profile page is displayed
-Invalid Registration
+- Student information is saved successfully
+- Profile picture is uploaded
+- Student profile page is displayed
+
+
+## Invalid Registration
 
 Expected Result:
 
-Validation messages are displayed
-Data will not be saved until requirements are completed
+- Validation messages are displayed
+- Data will not be saved until requirements are completed
 
-Author
+
+---
+
+# Author
 
 Developed by:
 
-John Carlo R. Benitez
+**John Carlo R. Benitez**
 
 Aurevian University Student Registration System
 
